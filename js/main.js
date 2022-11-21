@@ -27,7 +27,7 @@ searchInputEl.addEventListener('blur', function () {
  */
 // 페이지 스크롤에 영향을 받는 요소들을 검색!
 const badgeEl = document.querySelector('header .badges')
-const toTopEl = document.querySelector('#to-top')
+const toTopEl = document.querySelector("#to-top");
 // 페이지에 스크롤 이벤트를 추가!
 // 스크롤이 지나치게 자주 발생하는 것을 조절(throttle, 일부러 부하를 줌)
 window.addEventListener('scroll', _.throttle(function () {
@@ -51,12 +51,19 @@ window.addEventListener('scroll', _.throttle(function () {
       display: 'block'
     })
     // 상단으로 스크롤 버튼 숨기기!
-    gsap.to(toTopEl, .2, {
+    gsap.to(toTopEl,.2, {
       x: 100
-    })
+    });
   }
 }, 300))
+// _.throttle(함수,시간)
 
+
+toTopEl.addEventListener('click',function (){
+  gsap.to(window, .7, {
+    scrollTo:0
+  });
+});
 
 /**
  * 순서대로 나타나는 기능
@@ -164,3 +171,7 @@ spyEls.forEach(function (spyEl) {
     .setClassToggle(spyEl, 'show') // 요소가 화면에 보이면 show 클래스 추가
     .addTo(new ScrollMagic.Controller()) // 컨트롤러에 장면을 할당(필수!)
 })
+
+
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear() //2022
